@@ -1,4 +1,7 @@
 package roulette
 
-class RouletteTable {
+class RouletteTable(
+    var player:String,
+    var amount:Int
+) {
 }

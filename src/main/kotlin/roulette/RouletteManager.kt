@@ -1,6 +1,9 @@
 package roulette
 
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 
-class RouletteManager {
+@Component
+class RouletteManager{
+
+    val tables:MutableList<RouletteTable> = mutableListOf()
 }
