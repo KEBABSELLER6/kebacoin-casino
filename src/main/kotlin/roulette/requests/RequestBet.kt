@@ -1,3 +1,5 @@
 package roulette.requests
 
-data class RequestBet(val bet:Int)
+import roulette.RouletteField
+
+data class RequestBet(val betAmount:Int,val type:String,val fields:List<RouletteField>)

@@ -1,3 +1,5 @@
 package roulette.responses
 
-data class ResponseWinner(val winner:String)
+import roulette.RouletteField
+
+data class ResponseWinner(val winner:RouletteField,var tableId:Int?=null,val playerName:String,val amount:Int)
