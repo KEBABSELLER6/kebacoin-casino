@@ -1,0 +1,4 @@
+package roulette
+
+class RouletteTable {
+}

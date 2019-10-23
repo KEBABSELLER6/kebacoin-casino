@@ -1,0 +1,4 @@
+package casino
+
+interface GameController {
+}
