@@ -20,7 +20,7 @@ class RouletteController {
         const val basePath = "/roulette"
     }
 
-    @GetMapping("$basePath/getTable")
+    @GetMapping("$basePath/table")
     fun getTable(): ResponseEmptyTable {
         return ResponseEmptyTable("roulette", rouletteManager.tables.size)
     }
@@ -30,8 +30,8 @@ class RouletteController {
         //TODO if table has player return error
         //TODO check if player balance > amount
 
-        rouletteManager.tables.add(RouletteTable(request.playerName, request.amount))
-        return ResponseTable(tableId, request.playerName, request.amount)
+        rouletteManager.tables.add(RouletteTable(request.player))
+        return ResponseTable(tableId, request.player)
     }
 
     @PostMapping("$basePath/table/{tableId}/bet")

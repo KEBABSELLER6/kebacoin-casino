@@ -1,10 +1,10 @@
 package roulette
 
+import entity.Player
 import roulette.responses.ResponseWinner
 
 class RouletteTable(
-    var player: String,
-    var amount: Int,
+    var player: Player,
     private var fields: Array<RouletteField> = getBoard()
 ) {
 
@@ -13,21 +13,21 @@ class RouletteTable(
         val winner = fields.toMutableList().apply { shuffle() }[0]
         val newAmount: Int = if (winner in betFields) {
             when (type) {
-                "plain" -> amount + betAmount * 34
-                "split" -> amount + betAmount * 16
-                "firstFour" -> amount + betAmount * 7
-                "street" -> amount + betAmount * 10
-                "sixLine" -> amount + betAmount * 4
-                "dozen" -> amount + betAmount * 2
-                "column" -> amount + betAmount * 2
-                "color" -> amount + betAmount
-                else -> amount
+                "plain" -> player.amount + betAmount * 34
+                "split" -> player.amount + betAmount * 16
+                "firstFour" -> player.amount + betAmount * 7
+                "street" -> player.amount + betAmount * 10
+                "sixLine" -> player.amount + betAmount * 4
+                "dozen" -> player.amount + betAmount * 2
+                "column" -> player.amount + betAmount * 2
+                "color" -> player.amount + betAmount
+                else -> player.amount
             }
         } else {
-            amount - betAmount
+            player.amount - betAmount
         }
-        amount = newAmount
-        return ResponseWinner(playerName = player, winner = winner, amount = amount)
+        player.amount = newAmount
+        return ResponseWinner(winner = winner,player = player)
     }
 
     companion object {

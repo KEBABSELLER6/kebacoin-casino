@@ -1,3 +1,5 @@
 package roulette.requests
 
-data class RequestTable (val playerName:String, val amount:Int)
+import entity.Player
+
+data class RequestTable (val player:Player, val amount:Int)
