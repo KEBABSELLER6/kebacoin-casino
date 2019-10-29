@@ -1,15 +1,15 @@
-#Still WIP
+# Still WIP
 
-#Kebacoin-casino
+# Kebacoin-casino
 It's a project for my uni class. 
 The general rule was that it needed to be a project using the Spring framework, and either SpringController or RestController.
 I used REST in this project, but the requests are not stateless, because I need to check if the player doesnt want to cheat.
 
 I implemented three basic games from casinos: roulette, slot machine and blackjack. These not include any advanced logic, just basic Collection shuffles, and the game logic itself.
 
-##Roulette
+## Roulette
 
-###REST definitions
+### REST definitions
 
 The betting rules are implemented via the rules of the american roulette. 
 These betting types are included bellow under the bet section.
@@ -124,9 +124,13 @@ Returns the map state after the bet, with the winning field and the updated user
 }
 ```
 
-##Slot machines
+## Slot machines
 
-###REST definitions
+The logic was implemented from a picture I found in Google.
+
+Link: http://www.slotmachinebasics.com/images/diagrams/3coin-paytable.gif
+
+### REST definitions
 
 'GET /slotmachine/machine'
 

@@ -8,7 +8,102 @@ class RouletteTableImpl(
     override var fields: Array<RouletteField> = initializeRouletteBoard()
 ) : RouletteTable {
 
+    override fun checkIfBetIsCorrect(type: String, fields: List<RouletteField>): Boolean {
+        when (type) {
+            "plain" -> {
+                if (fields.size != 1)
+                    return false
+            }
+            "split" -> {
+                if (fields.size != 2)
+                    return false
+            }
+            "firstFour" -> {
+                fields.forEach {
+                    if (it.number !in 0..3)
+                        return false
+                }
+            }
+            "street" -> {
+                val min = fields.minBy { it.number }?.number
+                fields.forEach {
+                    if (min != null) {
+                        if (it.number !in min..min + 3)
+                            return false
+                    }
+                }
+            }
+            "sixLine" -> {
+                val min = fields.minBy { it.number }?.number
+                fields.forEach {
+                    if (min != null) {
+                        if (it.number !in min..min + 6)
+                            return false
+                    }
+                }
+            }
+            "dozen" -> {
+                val dozen = when (fields.minBy { it.number }?.number) {
+                    in 1..12 -> 1
+                    in 12..24 -> 2
+                    in 25..36 -> 3
+                    else -> -1
+                }
+
+                fields.forEach {
+                    when (dozen) {
+                        1 -> {
+                            if (it.number !in 1..12)
+                                return false
+                        }
+                        2 -> {
+                            if (it.number !in 13..24)
+                                return false
+                        }
+                        3 -> {
+                            if (it.number !in 25..36)
+                                return false
+                        }
+                    }
+                }
+            }
+            "column" -> {
+                val column = when (fields.minBy { it.number }?.number) {
+                    1 -> 1
+                    2 -> 2
+                    3 -> 3
+                    else -> -1
+                }
+                val columnNumbers = Array(12) { i -> column + i * 3 }
+
+                fields.forEach {
+                    if (it.number !in columnNumbers)
+                        return false
+                }
+            }
+            "color" -> {
+                val color = (fields.minBy { it.number }?.number ?: -1) % 2
+                val colorNumbers = Array(36) { i -> i }.filter {
+                    if (color == 1) {
+                        it % 2 == 1
+                    } else it % 2 == 0
+                }
+
+                fields.forEach {
+                    if(it.number !in colorNumbers)
+                        return false
+                }
+            }
+        }
+
+        return true
+    }
+
     override fun takeBet(type: String, betFields: List<RouletteField>, betAmount: Int): ResponseWinner {
+        if (checkIfBetIsCorrect(type, betFields)) {
+            //TODO return with error
+        }
+
         val winner = fields.toMutableList().apply { shuffle() }[0]
         val newAmount: Int = if (winner in betFields) {
             when (type) {
