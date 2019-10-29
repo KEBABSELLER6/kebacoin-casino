@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*
 import roulette.responses.ResponseEmptyTable
 import roulette.RouletteManager
 import roulette.RouletteTable
+import roulette.RouletteTableImpl
 import roulette.requests.RequestBet
 import roulette.requests.RequestTable
 import roulette.responses.ResponseTable
@@ -30,7 +31,7 @@ class RouletteController {
         //TODO if table has player return error
         //TODO check if player balance > amount
 
-        rouletteManager.tables.add(RouletteTable(request.player))
+        rouletteManager.addTable(RouletteTableImpl(request.player))
         return ResponseTable(tableId, request.player)
     }
 

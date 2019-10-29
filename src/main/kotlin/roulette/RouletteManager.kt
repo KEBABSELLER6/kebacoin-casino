@@ -1,11 +1,9 @@
 package roulette
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+interface RouletteManager{
+    var tables:MutableList<RouletteTable>
 
-@Component
-class RouletteManager{
+    fun addTable(rouletteTable:RouletteTable)
 
-    @Autowired
-    lateinit var tables:MutableList<RouletteTable>
+    fun getTable(id:Int):RouletteTable
 }
