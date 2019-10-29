@@ -23,13 +23,14 @@ class RouletteController {
 
     @GetMapping("$basePath/table")
     fun getTable(): ResponseEmptyTable {
-        return ResponseEmptyTable("roulette", rouletteManager.tables.size)
+        return ResponseEmptyTable(tableNumber = rouletteManager.tables.size)
     }
 
     @PostMapping("$basePath/table/{tableId}")
     fun playerToTable(@RequestBody request: RequestTable, @PathVariable tableId: Int): ResponseTable {
         //TODO if table has player return error
         //TODO check if player balance > amount
+        //TODO remove amount from balance
 
         rouletteManager.addTable(RouletteTableImpl(request.player))
         return ResponseTable(tableId, request.player)

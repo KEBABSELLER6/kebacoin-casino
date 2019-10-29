@@ -1,3 +1,3 @@
 package roulette.responses
 
-data class ResponseEmptyTable(val tableType:String, val tableNumber:Int)
+data class ResponseEmptyTable(val type:String="roulette", val tableNumber:Int)

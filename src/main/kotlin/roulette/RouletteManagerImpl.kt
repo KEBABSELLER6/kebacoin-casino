@@ -15,4 +15,7 @@ class RouletteManagerImpl(
 
     override fun getTable(id: Int) = tables[id]
 
+    override fun removeTable(rouletteTable: RouletteTable) {
+        tables.remove(rouletteTable)
+    }
 }
