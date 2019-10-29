@@ -7,6 +7,8 @@ I used REST in this project, but the requests are not stateless, because I need 
 
 I implemented three basic games from casinos: roulette, slot machine and blackjack. These not include any advanced logic, just basic Collection shuffles, and the game logic itself.
 
+### I'm not using this software to earn any money in any form and the software uses a made up currency kebacoin.
+
 ## Roulette
 
 ### REST definitions
