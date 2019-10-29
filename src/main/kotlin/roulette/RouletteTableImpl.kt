@@ -3,7 +3,10 @@ package roulette
 import entity.Player
 import roulette.responses.ResponseWinner
 
-class RouletteTableImpl(override var player: Player) : RouletteTable {
+class RouletteTableImpl(
+    override var player: Player,
+    override var fields: Array<RouletteField> = initializeRouletteBoard()
+) : RouletteTable {
 
     override fun takeBet(type: String, betFields: List<RouletteField>, betAmount: Int): ResponseWinner {
         val winner = fields.toMutableList().apply { shuffle() }[0]
@@ -26,9 +29,9 @@ class RouletteTableImpl(override var player: Player) : RouletteTable {
         return ResponseWinner(winner = winner, player = player)
     }
 
-    override var fields: Array<RouletteField>
-        get() = Array(36) { i -> RouletteField(i) }
-        set(unused) {
-            Array(36) { i -> RouletteField(i) }
+    companion object : RouletteBoardInitializer {
+        override fun initializeRouletteBoard(): Array<RouletteField> {
+            return Array(36) { i -> RouletteField(i) }
         }
+    }
 }
