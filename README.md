@@ -9,6 +9,12 @@ I implemented three basic games from casinos: roulette, slot machine and blackja
 
 ### I'm not using this software to earn any money in any form and the software uses a made up currency kebacoin.
 
+For running the application
+
+```batch
+gradlew bootRun
+```
+
 ## Roulette
 
 ### REST definitions

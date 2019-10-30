@@ -83,7 +83,7 @@ class RouletteTableImpl(
             }
             "color" -> {
                 val color = (fields.minBy { it.number }?.number ?: -1) % 2
-                val colorNumbers = Array(36) { i -> i }.filter {
+                val colorNumbers = Array(36) { i -> i + 1 }.filter {
                     if (color == 1) {
                         it % 2 == 1
                     } else it % 2 == 0
@@ -100,7 +100,7 @@ class RouletteTableImpl(
     }
 
     override fun takeBet(type: String, betFields: List<RouletteField>, betAmount: Int): ResponseWinner {
-        if (checkIfBetIsCorrect(type, betFields)) {
+        if (!checkIfBetIsCorrect(type, betFields)) {
             //TODO return with error
         }
 
@@ -126,7 +126,7 @@ class RouletteTableImpl(
 
     companion object : RouletteBoardInitializer {
         override fun initializeRouletteBoard(): Array<RouletteField> {
-            return Array(36) { i -> RouletteField(i) }
+            return Array(37) { i -> RouletteField(i) }
         }
     }
 }
