@@ -1,5 +1,7 @@
 package configuration
 
+import blackjack.BlackjackTable
+import blackjack.BlackjackTableImpl
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import roulette.RouletteTable
@@ -18,6 +20,11 @@ class CasinoConfiguration {
     @Bean
     fun initSlotMachines():List<SlotMachine>{
         return mutableListOf<SlotMachineImpl>()
+    }
+
+    @Bean
+    fun initBlackjackTables():List<BlackjackTable>{
+        return mutableListOf<BlackjackTableImpl>()
     }
 
 }
