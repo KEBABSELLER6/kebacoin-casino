@@ -3,6 +3,7 @@ buildscript {
     ext.spring_boot_version = '2.1.0.RELEASE'
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -23,10 +24,17 @@ jar {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.springframework.boot:spring-boot-starter-web"
     testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    compile "org.springframework:spring-jdbc:4.3.10.RELEASE"
+    compile 'javax.xml.bind:jaxb-api:2.3.0'
+    compile 'org.hsqldb:hsqldb:2.4.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
 }

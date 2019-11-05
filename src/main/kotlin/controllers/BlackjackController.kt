@@ -1,4 +1,4 @@
-package casino
+package controllers
 
 import blackjack.BlackjackManager
 import blackjack.BlackjackTableImpl

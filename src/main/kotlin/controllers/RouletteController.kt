@@ -1,10 +1,9 @@
-package casino
+package controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import roulette.responses.ResponseEmptyTable
 import roulette.RouletteManager
-import roulette.RouletteTable
 import roulette.RouletteTableImpl
 import roulette.requests.RequestBet
 import roulette.requests.RequestTable
