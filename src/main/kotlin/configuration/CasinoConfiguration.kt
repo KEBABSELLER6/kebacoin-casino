@@ -39,10 +39,11 @@ class CasinoConfiguration {
         .build()
 
     @Bean
-    fun initEntityManagerFactory():LocalContainerEntityManagerFactoryBean =LocalContainerEntityManagerFactoryBean().apply {
-            dataSource=initDataSource()
+    fun initEntityManagerFactory(): LocalContainerEntityManagerFactoryBean =
+        LocalContainerEntityManagerFactoryBean().apply {
+            dataSource = initDataSource()
             setPackagesToScan("entity")
-            jpaVendorAdapter=HibernateJpaVendorAdapter()
+            jpaVendorAdapter = HibernateJpaVendorAdapter()
         }
 
     @Bean
@@ -53,5 +54,5 @@ class CasinoConfiguration {
     fun initMethodValidationPostProcessor(): MethodValidationPostProcessor = MethodValidationPostProcessor()
 
     @Bean
-    fun initTestUserDao(): UserDao =UserDaoImpl()
+    fun initTestUserDao(): UserDao = UserDaoImpl()
 }

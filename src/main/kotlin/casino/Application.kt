@@ -16,7 +16,6 @@ fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
 
     val context= AnnotationConfigApplicationContext(CasinoConfiguration::class.java)
-
     val dao: UserDao = context.getBean(UserDao::class.java)
     println(dao.getUsers())
     println(dao.getUserById(0))

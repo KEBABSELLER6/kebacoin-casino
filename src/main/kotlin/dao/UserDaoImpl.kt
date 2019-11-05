@@ -8,17 +8,18 @@ import javax.transaction.Transactional
 
 @Transactional
 @Repository
-class UserDaoImpl :UserDao{
+class UserDaoImpl : UserDao {
 
     @PersistenceContext
-    private lateinit var entityManager:EntityManager
+    private lateinit var entityManager: EntityManager
 
-    override fun getUsers(): List<User> = entityManager.createQuery("select u from User u",User::class.java).resultList
+    override fun getUsers(): List<User> = entityManager.createQuery("select u from User u", User::class.java).resultList
 
-    override fun getUserById(id: Int): User = entityManager.find(User::class.java,id)
+    override fun getUserById(id: Int): User = entityManager.find(User::class.java, id)
 
 
-    override fun getUserByUserName(username: String): List<User> = entityManager.createQuery("select u from User u where u.username = :username", User::class.java)
+    override fun getUserByUserName(username: String): List<User> =
+        entityManager.createQuery("select u from User u where u.username = :username", User::class.java)
             .setParameter("username", username).resultList
 
     override fun addUser(user: User): User = user.let {
