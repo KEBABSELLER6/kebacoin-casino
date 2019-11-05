@@ -14,29 +14,31 @@ import roulette.requests.RequestTable
 class BlackjackController {
 
     @Autowired
-    lateinit var blackjackManager:BlackjackManager
+    lateinit var blackjackManager: BlackjackManager
 
-    companion object{
-        const val basePath:String="blackjack"
+    companion object {
+        const val basePath: String = "blackjack"
     }
 
     @GetMapping("$basePath/table")
     fun getTable(): ResponseEmptyTable {
-        return ResponseEmptyTable(tableId= blackjackManager.tables.size)
+        return ResponseEmptyTable(tableId = blackjackManager.getNextFreeTable())
     }
 
     @PostMapping("$basePath/table/{tableId}")
-    fun playerToTable(@RequestBody requestBody:RequestTable,@PathVariable tableId:Int):ResponseTable{
+    fun playerToTable(@RequestBody requestBody: RequestTable, @PathVariable tableId: Int): ResponseTable {
         blackjackManager.addTable(BlackjackTableImpl(requestBody.player))
-        return ResponseTable(player = requestBody.player,tableId = tableId)
+        return ResponseTable(player = requestBody.player, tableId = tableId)
     }
 
     @PostMapping("$basePath/table/{tableId}/bet")
-    fun getFirstBet(@RequestBody requestBody: RequestBet, @PathVariable tableId: Int) = blackjackManager.getTable(tableId).takeBet(requestBody.betAmount)
+    fun getFirstBet(@RequestBody requestBody: RequestBet, @PathVariable tableId: Int) =
+        blackjackManager.getTable(tableId).takeBet(requestBody.betAmount)
 
 
     @PostMapping("$basePath/table/{tableId}/bet/action")
-    fun getBet(@RequestBody requestBody: RequestAction,@PathVariable tableId: Int) = blackjackManager.getTable(tableId).takeAction(requestBody.action)
+    fun getBet(@RequestBody requestBody: RequestAction, @PathVariable tableId: Int) =
+        blackjackManager.getTable(tableId).takeAction(requestBody.action)
 
 
 }

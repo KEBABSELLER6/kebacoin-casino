@@ -1,13 +1,15 @@
 package blackjack
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class BlackjackManagerImpl(
     @Autowired
-    override var tables: MutableList<BlackjackTable>
+    private val tables: MutableList<BlackjackTable>
 ) : BlackjackManager {
+    override fun getNextFreeTable(): Int = tables.size
+
     override fun addTable(table: BlackjackTable) {
         tables.add(table)
     }

@@ -22,7 +22,7 @@ class RouletteController {
 
     @GetMapping("$basePath/table")
     fun getTable(): ResponseEmptyTable {
-        return ResponseEmptyTable(tableNumber = rouletteManager.tables.size)
+        return ResponseEmptyTable(tableNumber = rouletteManager.getNextFreeTable())
     }
 
     @PostMapping("$basePath/table/{tableId}")
@@ -42,7 +42,7 @@ class RouletteController {
         //TODO check if right player
         //TODO check is bet < amount
 
-        return rouletteManager.tables[tableId].takeBet(bet.type, bet.fields, bet.betAmount).apply {
+        return rouletteManager.getTable(tableId).takeBet(bet.type, bet.fields, bet.betAmount).apply {
             this.tableId=tableId
         }
     }

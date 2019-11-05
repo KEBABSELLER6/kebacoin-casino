@@ -1,18 +1,18 @@
 package slotmachine
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class SlotMachineManagerImpl(
-
     @Autowired
-    override var slotMachines: MutableList<SlotMachine>)
-    :SlotMachineManager {
+    private val slotMachines: MutableList<SlotMachine>
+) : SlotMachineManager {
+    override fun getNextFreeMachine(): Int = slotMachines.size
 
     override fun addSlotMachine(slotMachine: SlotMachine) {
         slotMachines.add(slotMachine)
     }
 
-    override fun getSlotMachine(id: Int)=slotMachines[id]
+    override fun getSlotMachine(id: Int) = slotMachines[id]
 }

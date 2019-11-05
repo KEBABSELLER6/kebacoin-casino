@@ -22,7 +22,7 @@ class SlotMachineController {
 
     @GetMapping("$basePath/machine")
     fun getTable(): ResponseEmptyMachine {
-        return ResponseEmptyMachine(machineId = slotMachineManager.slotMachines.size)
+        return ResponseEmptyMachine(machineId = slotMachineManager.getNextFreeMachine())
     }
 
     @PostMapping("$basePath/machine/{machineId}")
