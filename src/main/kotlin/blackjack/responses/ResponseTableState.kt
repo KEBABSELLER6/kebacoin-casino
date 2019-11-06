@@ -1,6 +1,6 @@
 package blackjack.responses
 
-import blackjack.TableState
+import blackjack.table.TableState
 import entity.Player
 
 data class ResponseTableState(val player: Player,val tableState: TableState)

@@ -1,13 +1,13 @@
 package configuration
 
-import blackjack.BlackjackTable
-import blackjack.BlackjackTableImpl
+import blackjack.table.BlackjackTable
+import blackjack.table.BlackjackTableImpl
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import roulette.RouletteTable
-import roulette.RouletteTableImpl
-import slotmachine.SlotMachine
-import slotmachine.SlotMachineImpl
+import roulette.table.RouletteTable
+import roulette.table.RouletteTableImpl
+import slotmachine.machine.SlotMachine
+import slotmachine.machine.SlotMachineImpl
 
 @Configuration
 class CasinoConfiguration {

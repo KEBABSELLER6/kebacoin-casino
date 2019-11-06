@@ -1,6 +1,6 @@
 package roulette.requests
 
 import entity.Player
-import roulette.RouletteField
+import roulette.table.field.RouletteField
 
 data class RequestBet(val player:Player,val betAmount:Int,val type:String,val fields:List<RouletteField>)

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.transaction.annotation.EnableTransactionManagement
 
-@SpringBootApplication(scanBasePackages=["roulette","casino","configuration","slotmachine","blackjack","controllers","user"])
+@SpringBootApplication(scanBasePackages=["roulette","casino","configuration","slotmachine","blackjack","controller","user"])
 @EnableTransactionManagement
 class Application
 
