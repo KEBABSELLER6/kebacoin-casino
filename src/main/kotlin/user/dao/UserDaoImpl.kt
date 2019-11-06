@@ -1,6 +1,6 @@
-package dao
+package user.dao
 
-import entity.User
+import user.entity.User
 import org.springframework.stereotype.Repository
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
@@ -13,7 +13,7 @@ class UserDaoImpl : UserDao {
     @PersistenceContext
     private lateinit var entityManager: EntityManager
 
-    override fun updateUser(id: Int,user: User): User = entityManager.find(User::class.java, id).apply {
+    override fun updateUser(id: Int,user: User): User = entityManager.find(user.entity.User::class.java, id).apply {
         balance = user.balance
         birthDate = user.birthDate
         lastName = user.lastName

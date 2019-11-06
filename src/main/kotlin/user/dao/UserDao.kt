@@ -1,6 +1,6 @@
-package dao
+package user.dao
 
-import entity.User
+import user.entity.User
 
 interface UserDao {
     fun getUsers(): List<User>

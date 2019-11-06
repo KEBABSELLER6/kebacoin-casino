@@ -1,4 +1,4 @@
-package entity
+package user.entity
 
 import java.util.*
 import javax.persistence.*

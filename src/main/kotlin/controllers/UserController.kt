@@ -1,9 +1,9 @@
 package controllers
 
-import entity.User
+import user.entity.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import service.UserService
+import user.service.UserService
 
 @RestController
 class UserController {
@@ -26,17 +26,17 @@ class UserController {
     }
 
     @PostMapping("$basePath")
-    fun addUser(@RequestBody user:User):User{
+    fun addUser(@RequestBody user: User): User {
         return userService.addUser(user)
     }
 
     @PutMapping("$basePath/{id}")
-    fun updateUser(@RequestBody user: User,@PathVariable id: Int):User{
+    fun updateUser(@RequestBody user: User, @PathVariable id: Int): User {
         return userService.updateUser(id,user)
     }
 
     @DeleteMapping("$basePath/{id}")
-    fun deleteUser(@PathVariable id: Int):User{
+    fun deleteUser(@PathVariable id: Int): User {
         return userService.removeUser(id)
     }
 
