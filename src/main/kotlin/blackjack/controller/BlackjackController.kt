@@ -2,13 +2,13 @@ package blackjack.controller
 
 import blackjack.manager.BlackjackManager
 import blackjack.table.BlackjackTableImpl
-import blackjack.requests.RequestAction
-import blackjack.requests.RequestBet
+import blackjack.request.RequestAction
+import blackjack.request.RequestBet
 import org.springframework.beans.factory.annotation.Autowired
-import blackjack.responses.ResponseEmptyTable
-import blackjack.responses.ResponseTable
+import blackjack.response.ResponseEmptyTable
+import blackjack.response.ResponseTable
 import org.springframework.web.bind.annotation.*
-import roulette.requests.RequestTable
+import roulette.request.RequestTable
 
 @RestController
 class BlackjackController {

@@ -2,7 +2,7 @@ package roulette.table
 
 import entity.Player
 import roulette.table.field.RouletteField
-import roulette.responses.ResponseWinner
+import roulette.response.ResponseWinner
 
 interface RouletteTable{
 

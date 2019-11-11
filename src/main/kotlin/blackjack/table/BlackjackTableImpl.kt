@@ -4,7 +4,7 @@ import entity.Player
 import blackjack.table.card.CardImpl.Companion.COLORS
 import blackjack.table.card.CardImpl.Companion.TYPES
 import blackjack.table.card.CardImpl.Companion.VALUES
-import blackjack.responses.ResponseTableState
+import blackjack.response.ResponseTableState
 import blackjack.table.card.Card
 import blackjack.table.card.CardImpl
 import blackjack.table.card.DeckInitializer

@@ -2,7 +2,7 @@ package slotmachine.machine
 
 import entity.Player
 import slotmachine.machine.slot.Slot
-import slotmachine.responses.ResponseWinner
+import slotmachine.response.ResponseWinner
 
 interface SlotMachine {
 

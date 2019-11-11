@@ -1,4 +1,4 @@
-package roulette.responses
+package roulette.response
 
 import entity.Player
 import roulette.table.field.RouletteField

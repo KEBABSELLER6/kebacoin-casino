@@ -1,4 +1,4 @@
-package roulette.requests
+package roulette.request
 
 import entity.Player
 import roulette.table.field.RouletteField

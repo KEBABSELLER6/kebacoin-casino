@@ -1,4 +1,4 @@
-package slotmachine.requests
+package slotmachine.request
 
 import entity.Player
 

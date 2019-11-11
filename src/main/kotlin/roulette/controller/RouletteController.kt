@@ -2,13 +2,13 @@ package roulette.controller
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import roulette.responses.ResponseEmptyTable
+import roulette.response.ResponseEmptyTable
 import roulette.manager.RouletteManager
 import roulette.table.RouletteTableImpl
-import roulette.requests.RequestBet
-import roulette.requests.RequestTable
-import roulette.responses.ResponseTable
-import roulette.responses.ResponseWinner
+import roulette.request.RequestBet
+import roulette.request.RequestTable
+import roulette.response.ResponseTable
+import roulette.response.ResponseWinner
 
 @RestController
 class RouletteController {

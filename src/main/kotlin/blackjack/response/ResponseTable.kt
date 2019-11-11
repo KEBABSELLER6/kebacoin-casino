@@ -1,4 +1,4 @@
-package blackjack.responses
+package blackjack.response
 
 import entity.Player
 

@@ -4,7 +4,7 @@ import entity.Player
 import slotmachine.machine.slot.Slot
 import slotmachine.machine.slot.SlotImpl
 import slotmachine.machine.slot.SlotInitializer
-import slotmachine.responses.ResponseWinner
+import slotmachine.response.ResponseWinner
 
 class SlotMachineImpl(
     override val player: Player,

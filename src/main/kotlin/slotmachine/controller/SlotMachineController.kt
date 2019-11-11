@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import slotmachine.machine.SlotMachineImpl
 import slotmachine.manager.SlotMachineManager
-import slotmachine.requests.RequestBet
-import slotmachine.requests.RequestMachine
-import slotmachine.responses.ResponseEmptyMachine
-import slotmachine.responses.ResponseMachine
-import slotmachine.responses.ResponseWinner
+import slotmachine.request.RequestBet
+import slotmachine.request.RequestMachine
+import slotmachine.response.ResponseEmptyMachine
+import slotmachine.response.ResponseMachine
+import slotmachine.response.ResponseWinner
 
 @RestController
 class SlotMachineController {

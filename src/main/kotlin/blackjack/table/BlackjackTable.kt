@@ -1,7 +1,7 @@
 package blackjack.table
 
 import blackjack.table.card.Card
-import blackjack.responses.ResponseTableState
+import blackjack.response.ResponseTableState
 import entity.Player
 
 interface BlackjackTable{

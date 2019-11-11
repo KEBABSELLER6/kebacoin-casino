@@ -3,7 +3,7 @@ package roulette.table
 import entity.Player
 import roulette.table.field.RouletteBoardInitializer
 import roulette.table.field.RouletteField
-import roulette.responses.ResponseWinner
+import roulette.response.ResponseWinner
 
 class RouletteTableImpl(
     override var player: Player,

@@ -1,4 +1,4 @@
-package blackjack.requests
+package blackjack.request
 
 import entity.Player
 

@@ -1,4 +1,4 @@
-package blackjack.responses
+package blackjack.response
 
 import blackjack.table.TableState
 import entity.Player

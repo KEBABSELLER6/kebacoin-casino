@@ -1,4 +1,4 @@
-package slotmachine.responses
+package slotmachine.response
 
 import entity.Player
 
