@@ -1,4 +1,4 @@
-package controller
+package blackjack.controller
 
 import blackjack.manager.BlackjackManager
 import blackjack.table.BlackjackTableImpl

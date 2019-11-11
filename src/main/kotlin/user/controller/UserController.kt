@@ -1,4 +1,4 @@
-package controller
+package user.controller
 
 import user.entity.User
 import org.springframework.beans.factory.annotation.Autowired
