@@ -8,5 +8,19 @@ CREATE TABLE users (
   email  VARCHAR(50),
   birthDate DATE,
   balance INTEGER,
-  password VARCHAR(30)
+  password VARCHAR(30),
+  enabled BIT
+);
+
+CREATE TABLE authorities (
+  id INTEGER IDENTITY PRIMARY KEY,
+  name VARCHAR(30)
+);
+
+CREATE TABLE USER_AUTHORITY (
+  USER_ID INTEGER,
+  AUTHORITY_ID INTEGER,
+  PRIMARY KEY (USER_ID, AUTHORITY_ID),
+  FOREIGN KEY (USER_ID) REFERENCES users (id),
+  FOREIGN KEY (AUTHORITY_ID) REFERENCES authorities (id)
 );

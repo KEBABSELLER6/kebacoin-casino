@@ -1,11 +1,11 @@
 # Still WIP
 
-# Kebacoin-casino
+# Kebacoin-kebacoinCasino.casino
 It's a project for my uni class. 
 The general rule was that it needed to be a project using the Spring framework, and either SpringController or RestController.
 I used REST in this project, but the requests are not stateless, because I need to check if the player doesnt want to cheat.
 
-I implemented three basic games from casinos: roulette, slot machine and blackjack. These not include any advanced logic, just basic Collection shuffles, and the game logic itself.
+I implemented three basic games from casinos: kebacoinCasino.roulette, slot machine and kebacoinCasino.blackjack. These not include any advanced logic, just basic Collection shuffles, and the game logic itself.
 
 ### I'm not using this software to earn any money in any form and the software uses a made up currency kebacoin.
 
@@ -19,10 +19,10 @@ gradlew bootRun
 
 ### REST definitions
 
-The betting rules are implemented via the rules of the american roulette. 
-These betting types are included bellow under the bet section.
+The betting rules are implemented via the rules of the american kebacoinCasino.roulette. 
+These betting types are included bellow under the rouletteBet section.
 
-'GET /roulette/table'
+'GET /kebacoinCasino.roulette/table'
 
 Returns the table type, and the id of the next free table.
 
@@ -32,18 +32,18 @@ Returns the table type, and the id of the next free table.
 
 ```json 
 {
-  "type": "roulette",
+  "type": "kebacoinCasino.roulette",
   "tableNumber": 0
 }
 ```
 
-'POST /roulette/table/{tableId}'
+'POST /kebacoinCasino.roulette/table/{tableId}'
 
 Reserves the table for the player sent in the body, sends back the current table with the player.
 
 **Arguments**
 
--`"tableId"` the tableId from the get request
+-`"tableId"` the tableId from the get requestRoulette
 
 **Body**
 
@@ -72,21 +72,21 @@ Reserves the table for the player sent in the body, sends back the current table
 }
 ```
 
-'POST /roulette/table/{tableId}/bet'
+'POST /kebacoinCasino.roulette/table/{tableId}/rouletteBet'
 
-Will make a bet with the amount in the body on the fields specified.
+Will make a rouletteBet with the amount in the body on the fields specified.
 
 **Arguments**
 
--`"tableId"` the tableId from the get request
+-`"tableId"` the tableId from the get requestRoulette
 
 **Body**
 
-Contains the current state of the player before the bet, in the `"player"` object.
+Contains the current state of the player before the rouletteBet, in the `"player"` object.
 
-Contains the bet amount for this rounds `"betAmount""` which is an integer.
+Contains the rouletteBet amount for this rounds `"betAmount""` which is an integer.
 
-Contains the the bet type in the `"type"` fields, which can be from the following:
+Contains the the rouletteBet type in the `"type"` fields, which can be from the following:
 
 ```
 "plain","split","firstFour","street,"sixLine","dozen","column","color"
@@ -117,7 +117,7 @@ And contains the fields for that type under the `"fields"` tag. Every fields has
 
 -'200 OK' on success
 
-Returns the map state after the bet, with the winning field and the updated user balance.
+Returns the map state after the rouletteBet, with the winning field and the updated user balance.
 
 ```json
 {
@@ -140,7 +140,7 @@ Link: http://www.slotmachinebasics.com/images/diagrams/3coin-paytable.gif
 
 ### REST definitions
 
-'GET /slotmachine/machine'
+'GET /kebacoinCasino.slotmachine/machine'
 
 Returns the game type, and the id of the next free machine.
 
@@ -155,13 +155,13 @@ Returns the game type, and the id of the next free machine.
 }
 ```
 
-'POST /slotmachine/machine/{machineId}'
+'POST /kebacoinCasino.slotmachine/machine/{machineId}'
 
 Reserves the machine for the player sent in the body, sends back the current machine with the player.
 
 **Arguments**
 
--`"machineId"` the machineId from the get request
+-`"machineId"` the machineId from the get requestRoulette
 
 **Body**
 
@@ -190,19 +190,19 @@ Reserves the machine for the player sent in the body, sends back the current mac
 }
 ```
 
-'POST /roulette/table/{machineId}/bet'
+'POST /kebacoinCasino.roulette/table/{machineId}/rouletteBet'
 
-Will make a bet with the amount in the body.
+Will make a rouletteBet with the amount in the body.
 
 **Arguments**
 
--`"machineId"` the tableId from the get request
+-`"machineId"` the tableId from the get requestRoulette
 
 **Body**
 
-Contains the current state of the player before the bet, in the `"player"` object.
+Contains the current state of the player before the rouletteBet, in the `"player"` object.
 
-Contains the bet amount for this rounds `"betAmount""` which is an integer.
+Contains the rouletteBet amount for this rounds `"betAmount""` which is an integer.
 
 
 ```json
@@ -219,7 +219,7 @@ Contains the bet amount for this rounds `"betAmount""` which is an integer.
 
 -'200 OK' on success
 
-Returns the current roll after the bet and the updated user balance.
+Returns the current roll after the rouletteBet and the updated user balance.
 
 ```json
 {
