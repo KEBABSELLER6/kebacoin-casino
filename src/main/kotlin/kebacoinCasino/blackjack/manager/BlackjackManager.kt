@@ -6,7 +6,7 @@ interface BlackjackManager {
 
     fun addTable(table: BlackjackTable)
 
-    fun removeTable(table: BlackjackTable)
+    fun removeTable(index:Int)
 
     fun getTable(index: Int): BlackjackTable
 

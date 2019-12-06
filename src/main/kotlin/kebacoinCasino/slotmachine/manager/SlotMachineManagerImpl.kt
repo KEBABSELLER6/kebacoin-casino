@@ -9,7 +9,9 @@ class SlotMachineManagerImpl(
     @Autowired
     private val slotMachines: MutableList<SlotMachine>
 ) : SlotMachineManager {
-
+    override fun removeSlotMachine(index: Int) {
+        slotMachines.removeAt(index)
+    }
 
     override fun getNextFreeMachine(): Int = slotMachines.size
 

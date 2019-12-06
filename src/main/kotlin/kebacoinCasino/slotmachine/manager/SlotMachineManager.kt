@@ -10,4 +10,6 @@ interface SlotMachineManager {
 
     fun getNextFreeMachine():Int
 
+    fun removeSlotMachine(index:Int)
+
 }

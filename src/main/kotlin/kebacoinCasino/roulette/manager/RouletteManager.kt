@@ -8,7 +8,7 @@ interface RouletteManager{
 
     fun getTable(id:Int): RouletteTable
 
-    fun removeTable(rouletteTable: RouletteTable)
+    fun removeTable(index:Int)
 
     fun getNextFreeTable():Int
 }

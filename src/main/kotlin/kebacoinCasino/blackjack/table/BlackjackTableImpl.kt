@@ -11,7 +11,9 @@ import kebacoinCasino.blackjack.table.card.DeckInitializer
 class BlackjackTableImpl(
     override val deck: MutableList<Card> = initializeBlackjackDeck().toMutableList(),
     override var state: TableState = initTableState().apply { this.amount = amount },
-    override var cardCounter: Int = 0, override val username: String, override var amount: Int
+    override var cardCounter: Int = 0,
+    override val username: String,
+    override var amount: Int
 ) : BlackjackTable {
 
     companion object : DeckInitializer {
@@ -58,19 +60,19 @@ class BlackjackTableImpl(
                 //DO nothing with player amount
                 return ResponseBlackjackTableState(state.apply {
                     over = true
-                    won="both"
+                    won = "both"
                 })
             } else if (state.playerValue == 21) {
                 return ResponseBlackjackTableState(state.apply {
                     over = true
-                    won="player"
-                    amount+= betAmount / 2
+                    won = "player"
+                    amount += betAmount / 2
                 })
             } else if (state.houseValue == 21) {
                 return ResponseBlackjackTableState(state.apply {
                     over = true
-                    won="player"
-                    amount-= betAmount
+                    won = "player"
+                    amount -= betAmount
                 })
             }
         }
@@ -88,8 +90,10 @@ class BlackjackTableImpl(
         state.let {
             if (it.playerValue > 21) {
                 amount -= it.betAmount
+                it.won = "house"
             } else if (it.houseValue > 21) {
                 amount += it.betAmount
+                it.won = "player"
             }
             if (it.over) {
                 if (it.playerValue > it.houseValue) {
@@ -97,7 +101,7 @@ class BlackjackTableImpl(
                     it.won = "player"
                 } else {
                     amount -= state.betAmount
-                    it.won="house"
+                    it.won = "house"
                 }
             }
         }

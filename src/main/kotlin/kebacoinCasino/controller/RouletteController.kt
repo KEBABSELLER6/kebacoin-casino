@@ -35,7 +35,7 @@ class RouletteController {
                 throw LowBalanceException()
             } else this.balance -= request.rouletteAmount
         }
-        rouletteManager.addTable(RouletteTableImpl(balance = request.rouletteAmount, username = request.username))
+        rouletteManager.addTable(RouletteTableImpl(amount = request.rouletteAmount, username = request.username))
         userService.updateUser(user.id, user)
         return ResponseRouletteTable(
             tableId,
@@ -52,7 +52,7 @@ class RouletteController {
             throw IllegalBetException()
         }else if(!checkIfBetIsCorrect(request.type,request.fields)){
             throw IllegalBetException()
-        }else if(checkBetAmount(request.rouletteBetAmount,rouletteManager.getTable(tableId).balance)){
+        }else if(checkBetAmount(request.rouletteBetAmount,rouletteManager.getTable(tableId).amount)){
             throw IllegalBetException()
         }else return rouletteManager.getTable(tableId).takeBet(request.type, request.fields, request.rouletteBetAmount)
             .apply {
@@ -66,8 +66,9 @@ class RouletteController {
         if(checkTable(user.username, tableId)){
             throw IllegalBetException()
         }
-        user.balance += rouletteManager.getTable(tableId).balance
+        user.balance += rouletteManager.getTable(tableId).amount
         userService.updateUser(user.id, user)
+        rouletteManager.removeTable(tableId)
         return UserDto(userService.getUserById(user.id))
     }
 
@@ -78,7 +79,6 @@ class RouletteController {
     }
 
     private fun checkTable(username: String, id: Int) = (rouletteManager.getNextFreeTable() <= id || rouletteManager.getTable(id).username != username)
-
 
     private fun checkIfBetIsCorrect(type: String, fields: List<RouletteField>): Boolean {
         when (type) {

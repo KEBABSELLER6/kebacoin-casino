@@ -9,7 +9,7 @@ class SlotMachineImpl(
     override var slots: Array<MutableList<Slot>> = Array(3) { i ->
         initializeSlot()
             .toMutableList()
-    }, override val username: String, override var balance: Int
+    }, override val username: String, override var amount: Int
 ) : SlotMachine {
 
     companion object : SlotInitializer {
@@ -36,25 +36,25 @@ class SlotMachineImpl(
         val newAmount: Int =
             if (firstSlot.type == secondSlot.type && firstSlot.type == thirdSlot.type && secondSlot.type == thirdSlot.type) {
                 when (firstSlot.type) {
-                    "orange" -> balance + betAmount * 600
-                    "yellow" -> balance + betAmount * 120
-                    "green" -> balance + betAmount * 100
-                    "blue" -> balance + betAmount * 80
-                    "pink" -> balance + betAmount * 40
-                    "blueSeven" -> balance + betAmount * 40
-                    "pinkSeven" -> balance + betAmount * 30
-                    "greenSeven" -> balance + betAmount * 20
-                    else -> balance
+                    "orange" -> amount + betAmount * 600
+                    "yellow" -> amount + betAmount * 120
+                    "green" -> amount + betAmount * 100
+                    "blue" -> amount + betAmount * 80
+                    "pink" -> amount + betAmount * 40
+                    "blueSeven" -> amount + betAmount * 40
+                    "pinkSeven" -> amount + betAmount * 30
+                    "greenSeven" -> amount + betAmount * 20
+                    else -> amount
                 }
             } else if (firstSlot.type == "yellow" && secondSlot.type == "green" && thirdSlot.type == "blue") {
-                balance + betAmount * 300
+                amount + betAmount * 300
             } else {
-                balance - betAmount
+                amount - betAmount
             }
 
-        balance = newAmount
+        amount = newAmount
         return ResponseSlotMachineWinner(
-            balance = balance,
+            amount = amount,
             username = username,
             firstSlot = firstSlot,
             secondSlot = secondSlot,

@@ -9,6 +9,10 @@ class RouletteManagerImpl(
     @Autowired
     private val tables: MutableList<RouletteTable>
 ): RouletteManager {
+    override fun removeTable(index: Int) {
+        tables.removeAt(index)
+    }
+
     override fun getNextFreeTable(): Int = tables.size
 
     override fun addTable(rouletteTable: RouletteTable) {
@@ -17,7 +21,4 @@ class RouletteManagerImpl(
 
     override fun getTable(id: Int) = tables[id]
 
-    override fun removeTable(rouletteTable: RouletteTable) {
-        tables.remove(rouletteTable)
-    }
 }

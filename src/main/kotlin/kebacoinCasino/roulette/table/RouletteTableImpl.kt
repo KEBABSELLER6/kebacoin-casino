@@ -6,7 +6,7 @@ import kebacoinCasino.roulette.response.ResponseRouletteWinner
 
 class RouletteTableImpl(
     override var fields: Array<RouletteField> = initializeRouletteBoard(),
-    override var balance: Int,
+    override var amount: Int,
     override val username: String
 ) : RouletteTable {
 
@@ -14,21 +14,21 @@ class RouletteTableImpl(
         val winner = fields.toMutableList().apply { shuffle() }[0]
         val newAmount: Int = if (winner in betFields) {
             when (type) {
-                "plain" -> balance + betAmount * 34
-                "split" -> balance + betAmount * 16
-                "firstFour" -> balance + betAmount * 7
-                "street" -> balance + betAmount * 10
-                "sixLine" -> balance + betAmount * 4
-                "dozen" -> balance + betAmount * 2
-                "column" -> balance + betAmount * 2
-                "color" -> balance + betAmount
-                else -> balance
+                "plain" -> amount + betAmount * 34
+                "split" -> amount + betAmount * 16
+                "firstFour" -> amount + betAmount * 7
+                "street" -> amount + betAmount * 10
+                "sixLine" -> amount + betAmount * 4
+                "dozen" -> amount + betAmount * 2
+                "column" -> amount + betAmount * 2
+                "color" -> amount + betAmount
+                else -> amount
             }
         } else {
-            balance - betAmount
+            amount - betAmount
         }
-        balance = newAmount
-        return ResponseRouletteWinner(winner = winner, amount = balance, username = username)
+        amount = newAmount
+        return ResponseRouletteWinner(winner = winner, amount = amount, username = username)
     }
 
     companion object : RouletteBoardInitializer {

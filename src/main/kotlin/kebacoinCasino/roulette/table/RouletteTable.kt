@@ -5,7 +5,7 @@ import kebacoinCasino.roulette.response.ResponseRouletteWinner
 
 interface RouletteTable{
 
-    var balance:Int
+    var amount:Int
     val username:String
     var fields: Array<RouletteField>
 

@@ -29,7 +29,7 @@ class SlotMachineController {
     @PostMapping("$basePath/machine")
     fun getTable(@RequestBody request: RequestSlotMachine): ResponseSlotMachine {
         val machineId=slotMachineManager.getNextFreeMachine()
-        slotMachineManager.addSlotMachine(SlotMachineImpl(balance = request.slotAmount, username = request.username))
+        slotMachineManager.addSlotMachine(SlotMachineImpl(amount = request.slotAmount, username = request.username))
         val user =
             userService.getUserByUsername(username = request.username).apply {
                 if (this.balance - request.slotAmount < 0) {
@@ -45,7 +45,7 @@ class SlotMachineController {
         if(checkTable(request.username, machineId)){
             throw IllegalBetException()
         }
-        if(checkBetAmount(request.slotBetAmount,slotMachineManager.getSlotMachine(machineId).balance)){
+        if(checkBetAmount(request.slotBetAmount,slotMachineManager.getSlotMachine(machineId).amount)){
             throw IllegalBetException()
         }
         return slotMachineManager.getSlotMachine(machineId).takeBet(betAmount = request.slotBetAmount).apply {
@@ -60,16 +60,17 @@ class SlotMachineController {
         if(checkTable(user.username, machineId)){
             throw IllegalBetException()
         }
-        user.balance += slotMachineManager.getSlotMachine(machineId).balance
+        user.balance += slotMachineManager.getSlotMachine(machineId).amount
 
         userService.updateUser(user.id, user)
+        slotMachineManager.removeSlotMachine(machineId)
         return UserDto(userService.getUserById(user.id))
     }
 
     inner class UserDto(user: User) {
         val id: Int = user.id
         val username: String = user.username
-        val balance: Int = user.balance
+        val amount: Int = user.balance
     }
 
     private fun checkTable(username: String, id: Int) = (slotMachineManager.getNextFreeMachine() <= id || slotMachineManager.getSlotMachine(id).username != username)

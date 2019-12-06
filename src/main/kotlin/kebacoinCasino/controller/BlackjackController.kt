@@ -72,7 +72,7 @@ class BlackjackController {
         checkTable(user.username,tableId)
         user.balance+=blackjackManager.getTable(tableId).amount
         userService.updateUser(user.id,user)
-        blackjackManager.removeTable(blackjackManager.getTable(tableId))
+        blackjackManager.removeTable(tableId)
         return UserDto(userService.getUserById(user.id))
     }
 
