@@ -50,8 +50,8 @@ class JwtAuthenticationFilter : OncePerRequestFilter() {
                     SecurityContextHolder.getContext().authentication = authentication
                     filterChain.doFilter(request, response)
                 }
-//            } catch (e: ExpiredJwtException) {
-//                throw TokenExpiredException()
+            } catch (e: ExpiredJwtException) {
+                throw TokenExpiredException()
             } catch (e: Exception) {
                 logger.warn(e.message)
                 filterChain.doFilter(request, response)

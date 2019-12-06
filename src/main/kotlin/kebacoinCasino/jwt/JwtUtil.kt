@@ -22,6 +22,7 @@ class JwtUtil {
         val claims = Jwts.claims().setSubject(user.username)
         //claims.expiration = generateExpirationDate()
         claims[ID] = user.id
+        claims.forEach { println(it) }
         return Jwts.builder()
             .setClaims(claims)
             .signWith(io.jsonwebtoken.SignatureAlgorithm.HS512, secret)

@@ -19,6 +19,14 @@ class UserServiceImpl(
     @Autowired
     private val userDao: UserDao
 ) : UserService, UserDetailsService {
+    override fun updateBalance(id: Int, balance: Int): User {
+        val user=userDao.getUserById(id)
+        user.apply {
+            this.balance+=balance
+        }
+        return userDao.updateUser(id,user)
+    }
+
     override fun getUserByUsername(username: String): User {
        val users=userDao.getUserByUsername(username)
         return if(users.size==1){

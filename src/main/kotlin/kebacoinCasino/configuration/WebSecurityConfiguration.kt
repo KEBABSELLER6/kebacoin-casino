@@ -8,9 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy
 import kebacoinCasino.jwt.JwtAuthenticationFilter
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfiguration: WebSecurityConfigurerAdapter(){
 
     @Bean
@@ -25,7 +27,8 @@ class WebSecurityConfiguration: WebSecurityConfigurerAdapter(){
     @Throws(Exception::class)
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and().authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated().and().csrf().disable()
+            .and().authorizeRequests().antMatchers("/login").permitAll()
+            .anyRequest().authenticated().and().csrf().disable()
 
         httpSecurity.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
 
