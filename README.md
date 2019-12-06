@@ -1,4 +1,4 @@
-# Still WIP
+# Still WIP and this README is not up to date.
 
 # Kebacoin-kebacoinCasino.casino
 It's a project for my uni class. 
