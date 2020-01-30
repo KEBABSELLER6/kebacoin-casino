@@ -1,4 +1,4 @@
-# Kebacoin-kebacoinCasino.casino
+kebacoinCasino
 It's a project for my university class. 
 The general rule was that it needed to be a project using the Spring framework, and either SpringController or RestController.
 I used REST in this project, but the requests are not stateless, because I need to check if the player is playing fairly.
