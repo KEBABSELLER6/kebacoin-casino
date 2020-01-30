@@ -1,5 +1,3 @@
-# Still WIP and this README is not up to date.
-
 # Kebacoin-kebacoinCasino.casino
 It's a project for my university class. 
 The general rule was that it needed to be a project using the Spring framework, and either SpringController or RestController.
